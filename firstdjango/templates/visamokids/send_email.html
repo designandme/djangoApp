@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+    <div class="alert alert-dismissible alert-success">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <strong>Confirmation Mail Sent to  {{ donor.first_name|capfirst}} {{ donor.last_name|capfirst}}!</strong>
+    </div>
+
+    <a href="{% url 'donor' %}" class="btn btn-primary btn-lg">Back</a>
+
+
+{% endblock %}

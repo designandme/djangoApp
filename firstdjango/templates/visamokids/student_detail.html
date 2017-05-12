@@ -1,0 +1,177 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <a href="{% url 'student' %}" class="btn btn-primary btn-lg btn-success">Back</a>
+    <p></p>
+
+	<hr>
+
+    <form class="form-horizontal">
+       <fieldset>
+        <legend>{{ student.first_name|capfirst}} {{ student.last_name|capfirst}}'s Details</legend>
+        <div class="form-group">
+          <label class="col-lg-2 control-label">Gr.No.</label>
+          <div class="col-lg-2">
+            <input type="text" class="form-control" id="inputEmail" placeholder="{{ student.gr_no}}" disabled="true">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-2 control-label">First Name</label>
+          <div class="col-lg-2">
+            <input type="text" class="form-control" id="inputEmail" placeholder="{{ student.first_name}}" disabled="true">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-2 control-label">Middle Name</label>
+          <div class="col-lg-2">
+            <input type="text" class="form-control" id="inputEmail" placeholder="{{ student.middle_name}}" disabled="true">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-2 control-label">Last Name</label>
+          <div class="col-lg-2">
+            <input type="text" class="form-control" id="inputEmail" placeholder="{{ student.last_name}}" disabled="true">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-2 control-label">Bio</label>
+          <div class="col-lg-6">
+            <input type="text" class="form-control" id="inputEmail" placeholder="{{ student.bio}}" disabled="true">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-2 control-label">D.O.B</label>
+          <div class="col-lg-2">
+            <input type="text" class="form-control" id="inputEmail" placeholder="{{ student.dob}}" disabled="true">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-2 control-label">Birth Place</label>
+          <div class="col-lg-2">
+            <input type="text" class="form-control" id="inputEmail" placeholder="{{ student.birth_place}}" disabled="true">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-lg-2 control-label">Caste</label>
+          <div class="col-lg-2">
+            <input type="text" class="form-control" id="inputEmail" placeholder="{{ student.caste}}" disabled="true">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-2 control-label">SC/ST/OBC</label>
+          <div class="col-lg-2">
+            <input type="text" class="form-control" id="inputEmail" placeholder="{{ student.get_sc_st_obc_display}}" disabled="true">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-2 control-label">Nationality</label>
+          <div class="col-lg-2">
+            <input type="text" class="form-control" id="inputEmail" placeholder="{{ student.nationality}}" disabled="true">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-2 control-label">Blood Group</label>
+          <div class="col-lg-2">
+            <input type="text" class="form-control" id="inputEmail" placeholder="{{ student.blood_group}}" disabled="true">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-2 control-label">Date of Admission</label>
+          <div class="col-lg-2">
+            <input type="text" class="form-control" id="inputEmail" placeholder="{{ student.date_of_admission}}" disabled="true">
+          </div>
+        </div>
+         <div class="form-group">
+          <label class="col-lg-2 control-label">Medical Report</label>
+          <div class="col-lg-2">
+            <input type="text" class="form-control" id="inputEmail" placeholder="{{ student.get_medical_report_display}}" disabled="true">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-2 control-label">Any findings ?</label>
+          <div class="col-lg-2">
+            <input type="text" class="form-control" id="inputEmail" placeholder="{{ student.findings}}" disabled="true">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-2 control-label">IQ test</label>
+          <div class="col-lg-2">
+            <input type="text" class="form-control" id="inputEmail" placeholder="{{ student.iq_test}}" disabled="true">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-2 control-label">IQ result</label>
+          <div class="col-lg-2">
+            <input type="text" class="form-control" id="inputEmail" placeholder="{{ student.iq_result}}" disabled="true">
+          </div>
+        </div>
+
+       <legend>Student Father Details</legend>
+        <div class="form-group">
+          <label class="col-lg-2 control-label">First Name</label>
+          <div class="col-lg-2">
+            <input type="text" class="form-control" id="inputEmail" placeholder="{{ student.father_of_student.first_name}}" disabled="true">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-2 control-label">Middle Name</label>
+          <div class="col-lg-2">
+            <input type="text" class="form-control" id="inputEmail" placeholder="{{ student.father_of_student.middle_name}}" disabled="true">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-2 control-label">Last Name</label>
+          <div class="col-lg-2">
+            <input type="text" class="form-control" id="inputEmail" placeholder="{{ student.father_of_student.last_name}}" disabled="true">
+          </div>
+        </div>
+       <legend>Student Mother Details</legend>
+        <div class="form-group">
+          <label class="col-lg-2 control-label">First Name</label>
+          <div class="col-lg-2">
+            <input type="text" class="form-control" id="inputEmail" placeholder="{{ student.mother_of_student.first_name}}" disabled="true">
+          </div>
+        </div>
+       <legend>Student School Details</legend>
+        <div class="form-group">
+          <label class="col-lg-2 control-label">School Name</label>
+          <div class="col-lg-2">
+            <input type="text" class="form-control" id="inputEmail" placeholder="{{ student.student_school_info.admission_secured_school}}" disabled="true">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-2 control-label">Date of Admission</label>
+          <div class="col-lg-2">
+            <input type="text" class="form-control" id="inputEmail" placeholder="{{ student.student_school_info.date_of_admission_in_school}}" disabled="true">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-2 control-label">Grade</label>
+          <div class="col-lg-2">
+            <input type="text" class="form-control" id="inputEmail" placeholder="{{ student.student_school_info.get_grade_display}}" disabled="true">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-2 control-label">Enrollment No.</label>
+          <div class="col-lg-2">
+            <input type="text" class="form-control" id="inputEmail" placeholder="{{ student.student_school_info.school_enrollment_number}}" disabled="true">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-2 control-label">Aadhar Card Number</label>
+          <div class="col-lg-2">
+            <input type="text" class="form-control" id="inputEmail" placeholder="{{ student.student_school_info.aadhar_card_no}}" disabled="true">
+          </div>
+        </div>
+      </fieldset>
+    </form>
+    <div>
+    <p></p>
+     <div class="jumbotron">
+     </div>
+    </div>
+
+
+{% endblock %}

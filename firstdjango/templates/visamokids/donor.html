@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<div>		
+		<h3>Donors list</h3>
+		<hr>
+		    <table id="myDataTable" class="table table-striped table-bordered" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Sr.No.</th>
+                        <th>Name</th>
+                        <th>Date of Sponsorship</th>
+                        <th>Name of Child Sponsored</th>
+                        <th>Type of Sponsor</th>
+                        <th>Nature of Sponsorship</th>
+                        <th>35AC</th>
+                        <th>80G</th>
+                        <th>Reminder Date</th>
+                        <th>Mail</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for donor in donors %}
+                        <tr>
+                            <td>
+                                <a href="{% url 'donor_detail' donor.id %}"> {{ donor.id }} </a>
+                            </td>
+                            <td>
+                                <a href="{% url 'donor_detail' donor.id %}"> {{ donor.first_name|capfirst}} {{ donor.last_name|capfirst}} </a>
+                            </td>
+                            <td>
+                                {{ donor.sponsorship_date}}
+                            </td>
+                            <td>
+                                {% for child_sponsored in donor.child_sponsored.all %}
+                                    {% if child_sponsored and child_sponsored.strip %}
+
+                                    {% else %}
+                                        {{ child_sponsored.first_name }},
+                                    {% endif %}
+
+                                {% endfor %}
+
+                            </td>
+                            <td>
+                                {{ donor.get_sponsorship_type_display}}
+                            </td>
+                            <td>
+                                {{ donor.get_sponsorship_nature_display}}
+                            </td>
+                            <td>
+                                {{ donor.get_is_35_ac_given_display}}
+                            </td>
+                            <td>
+                                {{ donor.get_is_80_G_display}}
+                            </td>
+                            <td>
+                                {{ donor.reminder_date}}
+                            </td>
+                            <td>
+                               <a href="{% url 'send_email' donor.id %}" class="btn btn-primary btn-xs btn-success"> Send</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+
+                </tbody>
+         </table>
+	</div>
+{% endblock %}

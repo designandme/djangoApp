@@ -1,0 +1,218 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <a href="{% url 'donor' %}" class="btn btn-primary btn-lg btn-success" xmlns="http://www.w3.org/1999/html">Back</a>
+    <p></p>
+
+	<hr>
+
+    <form class="form-horizontal">
+       <fieldset>
+        <legend>{{ donor.first_name|capfirst}} {{ donor.last_name|capfirst}}'s Details</legend>
+
+        <div class="form-group">
+          <label class="col-lg-2 control-label">First Name</label>
+          <div class="col-lg-2">
+            <input type="text" class="form-control" id="inputEmail" placeholder="{{ donor.first_name}}" disabled="true">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-2 control-label">Last Name</label>
+          <div class="col-lg-2">
+            <input type="text" class="form-control" id="inputEmail" placeholder="{{ donor.last_name}}" disabled="true">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-2 control-label">Contact Number</label>
+          <div class="col-lg-2">
+            <input type="text" class="form-control" id="inputEmail" placeholder="{{ donor.contact_number}}" disabled="true">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-2 control-label">Email</label>
+          <div class="col-lg-4">
+            <input type="text" class="form-control" id="inputEmail" placeholder="{{ donor.email}}" disabled="true">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-2 control-label">D.O.B</label>
+          <div class="col-lg-2">
+            <input type="text" class="form-control" id="inputEmail" placeholder="{{ donor.dob}}" disabled="true">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-2 control-label">D.O.B Family Member</label>
+          <div class="col-lg-2">
+            <input type="text" class="form-control" id="inputEmail" placeholder="{{ donor.dob_family_member}}" disabled="true">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-2 control-label">Marriage Anniversary</label>
+          <div class="col-lg-2">
+            <input type="text" class="form-control" id="inputEmail" placeholder="{{ donor.marriage_anniversary}}" disabled="true">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-2 control-label">Address</label>
+          <div class="col-lg-6">
+            <input type="text" class="form-control" id="inputEmail" placeholder="{{ donor.address}}" disabled="true">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-2 control-label">Citizenship</label>
+          <div class="col-lg-2">
+            <input type="text" class="form-control" id="inputEmail" placeholder="{{ donor.citizenship}}" disabled="true">
+          </div>
+        </div>
+
+        <legend>Details of Sponsorship</legend>
+
+        <div class="form-group">
+          <label class="col-lg-2 control-label">Child Sponsored</label>
+            <div class="col-lg-2">
+            {% for child_sponsored in donor.child_sponsored.all %}
+                                    {% if child_sponsored and child_sponsored.strip %}
+
+                                    {% else %}
+                                        <input type="text" class="form-control" id="inputEmail" placeholder="{{ child_sponsored.first_name }}" disabled="true">
+                                        </br>
+                                    {% endif %}
+            {% endfor %}
+            </div>
+        </div>
+
+        <legend>Details of Sponsorship Amount Payment</legend>
+        <div class="form-group">
+        {% for payment_info in donor.payment_info.all %}
+                                    {% if payment_info and payment_info.strip %}
+
+                                    {% else %}
+
+                                       <div class="form-group">
+
+                                       <label class="col-lg-2 control-label">Sponsorship Amount</label>
+                                       <div class="col-lg-2">
+                                            <input type="text" class="form-control" id="inputEmail" placeholder="{{ payment_info.sponsorship_amount}}" disabled="true">
+                                       </div>
+                                       <label class="col-lg-2 control-label">Sponsorship Date</label>
+                                       <div class="col-lg-2">
+                                        <input type="text" class="form-control" id="inputEmail" placeholder="{{ payment_info.sponsorship_date}}" disabled="true">
+                                       </div>
+                                       </div>
+
+                                       <div class="form-group">
+                                       <label class="col-lg-2 control-label">Payment Details</label>
+                                       <div class="col-lg-6">
+                                        <input type="text" class="form-control" id="inputEmail" placeholder="{{ payment_info.payment_details}}" disabled="true">
+                                       </div>
+
+                                       </div>
+                                        <hr>
+
+                                    {% endif %}
+        {% endfor %}
+        </div>
+
+        {% comment %}<div class="form-group">
+          <label class="col-lg-2 control-label">Sponsorship Amount</label>
+          <div class="col-lg-2">
+            <input type="text" class="form-control" id="inputEmail" placeholder="{{ donor.sponsorship_amount}}" disabled="true">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-2 control-label">Sponsorship Date</label>
+          <div class="col-lg-2">
+            <input type="text" class="form-control" id="inputEmail" placeholder="{{ donor.sponsorship_date}}" disabled="true">
+          </div>
+        </div>{% endcomment %}
+        <div class="form-group">
+          <label class="col-lg-2 control-label">Sponsorship Type</label>
+          <div class="col-lg-2">
+            <input type="text" class="form-control" id="inputEmail" placeholder="{{ donor.get_sponsorship_type_display}}" disabled="true">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-2 control-label">Sponsorship</label>
+          <div class="col-lg-2">
+            <input type="text" class="form-control" id="inputEmail" placeholder="{{ donor.get_sponsorship_sub_type_display}}" disabled="true">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-lg-2 control-label">Sponsorship Nature</label>
+          <div class="col-lg-2">
+            <input type="text" class="form-control" id="inputEmail" placeholder="{{ donor.get_sponsorship_nature_display}}" disabled="true">
+          </div>
+        </div>
+
+         <legend>Tax Exemption</legend>
+        <div class="form-group">
+          <label class="col-lg-2 control-label">Is 35 AC given ?</label>
+          <div class="col-lg-2">
+            <input type="text" class="form-control" id="inputEmail" placeholder="{{ donor.get_is_35_ac_given_display}}" disabled="true">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-2 control-label">Is 80 G given ?</label>
+          <div class="col-lg-2">
+            <input type="text" class="form-control" id="inputEmail" placeholder="{{ donor.get_is_80_G_display}}" disabled="true">
+          </div>
+        </div>
+
+
+       <legend>Reference</legend>
+        <div class="form-group">
+          <label class="col-lg-2 control-label">Reference</label>
+          <div class="col-lg-6">
+            <input type="text" class="form-control" id="inputEmail" placeholder="{{ donor.reference}}" disabled="true">
+          </div>
+        </div>
+
+       <legend>Reminders</legend>
+        <div class="form-group">
+          <label class="col-lg-2 control-label">Reminder Date</label>
+          <div class="col-lg-2">
+            <input type="text" class="form-control" id="inputEmail" placeholder="{{donor.reminder_date}}" disabled="true">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-2 control-label">Reminder Comment</label>
+          <div class="col-lg-6">
+            <input type="text" class="form-control" id="inputEmail" placeholder="{{donor.reminder_comments}}" disabled="true">
+          </div>
+        </div>
+        <legend>Documents Shared with Donors</legend>
+        <div class="form-group">
+          <label class="col-lg-2 control-label">Child Pictures </label>
+          <div class="col-lg-2">
+            <input type="text" class="form-control" id="inputEmail" placeholder="{{ donor.get_child_pictures_available_display}}" disabled="true">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-2 control-label">Child Stories</label>
+          <div class="col-lg-2">
+            <input type="text" class="form-control" id="inputEmail" placeholder="{{ donor.get_child_story_available_display}}" disabled="true">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-2 control-label">Progress Report</label>
+          <div class="col-lg-2">
+            <input type="text" class="form-control" id="inputEmail" placeholder="{{ donor.get_progress_report_display}}" disabled="true">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-2 control-label">Annual Report</label>
+          <div class="col-lg-2">
+            <input type="text" class="form-control" id="inputEmail" placeholder="{{ donor.get_annual_report_display}}" disabled="true">
+          </div>
+        </div>
+      </fieldset>
+    </form>
+    <div>
+    <p></p>
+     <div class="jumbotron">
+     </div>
+    </div>
+	
+{% endblock %}
