@@ -2,6 +2,7 @@ from django.shortcuts import render,render_to_response
 from django.http import Http404
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
+from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template.loader import render_to_string
@@ -13,28 +14,31 @@ from django.template.loader import render_to_string
 
 from visamokids.models import Student,Donor
 
-
+@login_required(login_url='login_page.html')
 def index(request):
-	if request.user.is_active:
+	# if request.user.is_active:
 		students = Student.objects.all()
 		donors = Donor.objects.all()
 		return render(request,'visamokids/index.html', {
 			'students':students,
 			'donors':donors,		
 		})
-	return render(request,'login_page.html',{})
+	# return render(request,'login_page.html',{})
 	# sending the students created on line 12 with key as "students" into the index.html
 
 
+@login_required(login_url='login_page.html')
 def student(request):
-	if request.user.is_active:
+	#if request.user.is_active:
 
 		students = Student.objects.all()
 		return render(request,'visamokids/student.html', {
 			'students':students,
 		})
-	return render(request,'login_page.html',{})
+	#return render(request,'login_page.html',{})
 
+
+@login_required(login_url='login_page.html')
 def donor(request):
 	donors = Donor.objects.all()
 	return render(request,'visamokids/donor.html', {
@@ -42,6 +46,7 @@ def donor(request):
 		})		
 
 
+@login_required(login_url='login_page.html')
 def student_detail(request, gr_no):
 	# return HttpResponse('<p> In Student Detail View. Student id {0} </p>'.format(id))
 	# here we are using format method to use String Interpolation
@@ -78,7 +83,7 @@ def sendEmail(request, id):
 		})
 
 
-
+@login_required(login_url='login_page.html')
 def donor_detail(request, id):
 	
 	try:
@@ -100,7 +105,19 @@ def login_view(request):
 
 	return render(request,'login_page.html',{})
 
+def logout_view(request):
 
+	if request.POST:
+		username=request.POST['username']
+		password=request.POST['password']
+		user= authenticate(username=username,password=password)
+		if user is not None:
+			login(request,user)
+			return render(request, 'visamokids/index.html', {'username':username})
+	else:
+		logout(request)
+		# Redirect to a success page.
+		return render(request, 'login_page.html', {})
 
 
 

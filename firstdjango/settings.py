@@ -29,13 +29,11 @@ ALLOWED_HOSTS = []
 
 # Email Settings
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-#EMAIL_HOST = 'localhost'
-#EMAIL_PORT = '1025'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'a@kalorex.org'
-EMAIL_HOST_PASSWORD = 'sd'
+EMAIL_HOST = 'localhost'
+EMAIL_PORT = '1025'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
+
 
 # Application definition
 

@@ -10,6 +10,7 @@ urlpatterns = [
     # url(r'^search/', views.search, name='search'),    
     url(r'^students/', views.student, name='student'),
     url(r'^login/', views.login_view, name='login'),
+    url(r'^logout/', views.logout_view, name='logout'),
     url(r'^donors/', views.donor, name='donor'),
     url(r'^student/(?P<gr_no>\d+)/',views.student_detail, name='student_detail'),
     url(r'^donor/(?P<id>\d+)/',views.donor_detail, name='donor_detail'),
